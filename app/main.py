@@ -22,6 +22,6 @@ async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
     try:
         while True:
-            await asyncio.sleep(3600)
+            await websocket.receive_text()
     except WebSocketDisconnect:
         manager.disconnect(websocket)
