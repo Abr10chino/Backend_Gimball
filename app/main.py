@@ -20,10 +20,8 @@ def read_root():
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket):
     await manager.connect(websocket)
-    print(f"[WebSocket] Nuevo frontend conectado.")
     try:
         while True:
-            await websocket.receive_text()
+            await asyncio.sleep(3600)
     except WebSocketDisconnect:
         manager.disconnect(websocket)
-        print(f"[WebSocket] Frontend desconectado.")
